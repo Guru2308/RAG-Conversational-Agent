@@ -60,7 +60,7 @@ async def generate_response(
             query,
             context,
             analysis,
-            "⏰ The AI analysis service is taking too long to respond.",
+            "The AI analysis service is taking too long to respond.",
         )
     except httpx.HTTPError as e:
         logger.error(f"LLM HTTP error: {str(e)}")
@@ -68,12 +68,12 @@ async def generate_response(
             query,
             context,
             analysis,
-            "🔧 I'm having trouble connecting to the AI analysis service.",
+            "I'm having trouble connecting to the AI analysis service.",
         )
     except Exception as e:
         logger.error(f"LLM general error: {str(e)}")
         return await _generate_fallback_response(
-            query, context, analysis, "⚠️ An error occurred during AI analysis."
+            query, context, analysis, "An error occurred during AI analysis."
         )
 
 
@@ -142,7 +142,7 @@ async def _generate_fallback_response(
         top_results = context[:3]
         results_text = "\n".join([f"• {ctx}" for ctx in top_results])
 
-        response = f"""🔍 **Search Results Analysis**
+        response = f"""**Search Results Analysis**
 
 **Query:** "{query}"
 
@@ -169,7 +169,7 @@ async def _generate_fallback_response(
 
         return response
     else:
-        base_response = f"""🔍 **Search Results**
+        base_response = f"""**Search Results**
 
 **Query:** "{query}"
 

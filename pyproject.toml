@@ -1,8 +1,9 @@
 [project]
 name = "ai-conversational-agent"
 version = "0.1.0"
-description = "Add your description here"
+description = "Proof of concept: AI-Powered-Conversational agent"
 readme = "README.md"
+authors = [{ name = "Chatheriyan" }]
 requires-python = ">=3.13"
 dependencies = [
     "dotenv>=0.9.9",
@@ -17,3 +18,6 @@ dev = [
     "pytest>=8.4.2",
     "pytest-asyncio>=1.2.0",
 ]
+
+[tool.uv.tasks]
+ai-chat = "uvicorn app.main:app --reload --port 8080 --host 0.0.0.0"
